@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./icon.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.js"></script>
+  </head>
+  <body>
+    <div id="box">
+      <div id="headbox">
+        <audio id="mp3">
+          <source src="./yinpin/y2311.mp3" />
+        </audio>
+        <p>小睡眠</p>
+        <div id="iconbox"></div>
+        <div id="startbox">
+          <i class="iconfont icon-zanting" id="icon"></i>
+        </div>
+        <div id="timebox"></div>
+      </div>
+      <div id="navbox">
+        <ul>
+          <li>全部</li>
+          <li>雷雨</li>
+          <li>课堂</li>
+          <li>自然</li>
+          <li>江湖</li>
+          <li>动物</li>
+        </ul>
+      </div>
+      <div id="contentbox">
+        <ul></ul>
+      </div>
+      <div id="bottombox">
+        <ul>
+          <li>
+            <i class="iconfont icon-zhumian"></i>
+            <p style="margin-left: 15px">声音</p>
+          </li>
+          <li>
+            <i class="iconfont icon-jingxuan"></i>
+            <p style="margin-left: 15px">睡眠</p>
+          </li>
+          <li>
+            <i class="iconfont icon-xiayu"></i>
+            <p style="margin-left: 15px">呼吸</p>
+          </li>
+          <li>
+            <i class="iconfont icon-circleyuanquan"></i>
+            <p style="margin-left: 15px">精选</p>
+          </li>
+          <li style="margin-right: 35px">
+            <i class="iconfont icon-wode"></i>
+            <p style="margin-left: 15px">我的</p>
+          </li>
+        </ul>
+        <a href="./yinpin/y2321.mp3"></a>
+      </div>
+    </div>
+    <script>
+      let icon1 = "iconfont icon-huomiao";
+      let index = 0;
+      let arr = [
+        {
+          name: "红泥小炉",
+          icon: "iconfont icon-huomiao1",
+          src: "./yinpin/水舒缓海浪循环-自然环境_爱给网_aigei_com.mp3",
+          id: "1",
+        },
+        {
+          name: "一碗面条",
+          icon: "iconfont icon-miantiao",
+          src: "./yinpin/y2263.mp3",
+          id: "3",
+        },
+        {
+          name: "公共汽车",
+          icon: "iconfont icon-gonggongqiche",
+          src: "./yinpin/y2285.mp3",
+          id: "2",
+        },
+        {
+          name: "小卖部",
+          icon: "iconfont icon-xiaomaibu",
+          src: "./yinpin/y2292.mp3",
+          id: "1",
+        },
+
+        {
+          name: "数学课堂",
+          icon: "iconfont icon-jisuangongshi",
+          src: "./yinpin/y2311.mp3",
+          id: "1",
+        },
+        {
+          name: "地理课堂",
+          icon: "iconfont icon-diqiuyi",
+          src: "./yinpin/y2312.mp3",
+          id: "3",
+        },
+        {
+          name: "一包薯片",
+          icon: "iconfont icon-shupian_",
+          src: "./yinpin/y2318.mp3",
+          id: "3",
+        },
+        {
+          name: "夜景",
+          icon: "iconfont icon-yejing",
+          src: "./yinpin/y2321.mp3",
+          id: "2",
+        },
+      ];
+      let arr1 = [
+        {
+          time: "5",
+          miaoshu: 5000,
+        },
+        {
+          time: "10",
+          miaoshu: 10000,
+        },
+        {
+          time: "15",
+          miaoshu: 15000,
+        },
+        {
+          time: "20",
+          miaoshu: 20000,
+        },
+      ];
+      $(function () {
+        randerlist();
+        iconboxrander();
+        timeFun();
+        $("#icon").click(bofangFun);
+        $("#contentbox ul li").dblclick(liFun);
+        $("#timebox button").on("click", btnFun);
+      });
+      function liFun() {
+        index = $(event.target).data("index");
+        console.log(index);
+        toggFun();
+      }
+      function toggFun() {
+        $("#mp3")[0].src = arr[index].src;
+        $("#mp3")[0].play();
+        // randerlist();
+        $("#icon").removeClass("icon-zanting");
+        $("#icon").addClass("icon-bofangzhong");
+        $("#iconbox").html(`<i class="${arr[index].icon}"></i>`);
+        if (arr[index].id == "1") {
+          $("#contentbox ul li")
+            .eq(index)
+            .addClass("a")
+            .siblings()
+            .removeClass("a b c");
+          $("#headbox").css({
+            background: "rgb(255, 123, 92)",
+          });
+        } else if (arr[index].id == "2") {
+          $("#contentbox ul li")
+            .eq(index)
+            .addClass("b")
+            .siblings()
+            .removeClass("a b c");
+          $("#headbox").css({
+            background: "rgb(6, 87, 132)",
+          });
+        } else {
+          $("#contentbox ul li")
+            .eq(index)
+            .addClass("c")
+            .siblings()
+            .removeClass("a b c");
+          $("#headbox").css({
+            background: "rgb(61, 196, 41)",
+          });
+        }
+      }
+      function bofangFun() {
+        $("#icon").toggleClass(" icon-zanting icon-bofangzhong");
+        if ($("#icon").hasClass("icon-zanting")) {
+          $("#mp3")[0].pause();
+        } else {
+          $("#mp3")[0].play();
+        }
+      }
+      function randerlist() {
+        html = "";
+        arr.forEach((item, index) => {
+          html += `
+          <li data-index=${index}>
+            <i class="${item.icon}" data-index=${index}></i>
+            <p data-index=${index}>${item.name}</p>
+          </li>
+          `;
+        });
+        $("#contentbox ul").html(html);
+      }
+      function iconboxrander() {
+        html = `<i class="${icon1}"></i>`;
+        $("#iconbox").html(html);
+      }
+      function timeFun() {
+        html = "";
+        arr1.forEach((item, index) => {
+          html += ` <button data-index=${index}>${item.time}</button>`;
+        });
+        $("#timebox").html(html);
+      }
+      function btnFun() {
+        let index1 = $(this).data("index");
+        let shijian = arr1[index1].miaoshu;
+        console.log(shijian);
+        setTimeout(function () {
+          $("#icon").trigger("click");
+        }, shijian);
+        alert(shijian + "ms秒后停止播放");
+      }
+    </script>
+  </body>
+</html>

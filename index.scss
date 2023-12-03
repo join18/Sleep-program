@@ -1,0 +1,147 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+#box {
+    width: 100%;
+    height: 99vh;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+#headbox {
+    width: 100%;
+    height: 40vh;
+    background-color: rgb(255, 123, 92);
+}
+
+#headbox p {
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+}
+
+#navbox {
+    width: 100%;
+    height: 5vh;
+    border: 1px solid #ccc;
+}
+
+#navbox ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 20px;
+    line-height: 5vh;
+
+}
+
+#iconbox {
+    width: 32%;
+    height: 20vh;
+
+    margin: auto;
+    text-align: center;
+    line-height: 20vh;
+}
+
+#iconbox i {
+    font-size: 240px;
+}
+
+#timebox {
+    width: 25%;
+    height: 5vh;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#contentbox {
+    width: 100%;
+    height: 45vh;
+    border: 1px solid wheat;
+}
+
+#contentbox ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#contentbox li {
+    width: 20%;
+    height: 9vh;
+    border: 1px solid white;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#bottombox {
+    width: 100%;
+    height: 7vh;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+#bottombox ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#startbox {
+    width: 50px;
+    height: 50px;
+
+    margin: auto;
+    margin-top: 15px;
+}
+
+#startbox i {
+    text-align: center;
+    line-height: 50px;
+}
+
+.a {
+    color: rgb(255, 123, 92);
+}
+
+.b {
+    color: rgb(6, 87, 132);
+}
+
+.c {
+    color: rgb(61, 196, 41);
+}
+
+#navbox li:nth-of-type(1) {
+    border-bottom: 5px solid rgb(6, 87, 132);
+}
+
+#timebox button {
+    height: 20px;
+    background-color: transparent;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    border: none;
+}
+
+#timebox {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+}
+
+
+#timebox button:active {
+    background-color: aliceblue;
+}
